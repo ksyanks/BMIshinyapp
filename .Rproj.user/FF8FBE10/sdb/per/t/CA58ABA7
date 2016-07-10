@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\nlibrary(shiny)\n\nshinyServer(function(input, output){\n  \n   #to calculate the BMI\n   reBdyBMI <- reactive({\n     reBdyBMI <- input$slrBdyKg/((input$slrBdyHt/100) * (input$slrBdyHt/100)) \n   })\n \n   #to output the chosen weight\n   output$bdyKgVal <- renderText({ \n      input$slrBdyKg \n   })\n   \n   #to output the chosen height\n   output$bdyHtVal <- renderText({ \n      input$slrBdyHt  \n   })\n  \n  \n   #to output the BMI \n   output$BMIVal <- renderText({\n     reBdyBMI()\n   })\n  \n   #to output the weight catgory\n   output$urCategory <- renderText({ \n     #to calculate the weight category\n     if (reBdyBMI() < 19){\n       Category <- (\"Under weight\")}\n     else if (reBdyBMI() >= 19 & reBdyBMI() < 25){\n       Category <- \"Normal weight\"}\n     else if (reBdyBMI() >= 25 & reBdyBMI() < 30){\n       Category <- \"Overweight\"}\n     else if (reBdyBMI() >= 30 & reBdyBMI() < 35){\n       Category <- \"Obesity level I\"}\n     else if (reBdyBMI() >= 35 & reBdyBMI() < 40){\n       Category <- \"Obesity level II\"}\n     else if (reBdyBMI() > 40){\n       Category <- \"Obesity level III\"}\n   \n   })\n\n})\n",
+    "created" : 1468123699416.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2308530819",
+    "id" : "CA58ABA7",
+    "lastKnownWriteTime" : 1468127388,
+    "last_content_update" : 1468127388628,
+    "path" : "C:/myFile/coursera/m9/wk4/myBMI/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

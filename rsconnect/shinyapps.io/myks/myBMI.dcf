@@ -1,0 +1,9 @@
+name: myBMI
+account: myks
+server: shinyapps.io
+appId: 113505
+bundleId: 500875
+url: https://myks.shinyapps.io/myBMI/
+when: 1468131470.76163
+asMultiple: FALSE
+asStatic: FALSE

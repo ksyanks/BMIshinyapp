@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(shiny)\nlibrary(ggplot2)\nlibrary(markdown)\n\ndata(mtcars)\ndataset <- mtcars\nav <- sum(dataset$mpg)/nrow(dataset)\n\nshinyServer(function(input, output) {\n\n   ds <- reactive({\n     if (input$bTran)\n       ds <- dataset\n     else\n       ds <- subset(dataset, dataset$am == as.numeric(input$dist))\n   })\n  \n   output$plot <- renderPlot({\n     #relabel the axis name\n     if (input$x == 'mpg') {\n       xLab <- 'Miles Per Gallon'\n     } else if (input$x == 'cyl') {\n          xLab <- 'Number of cylinders'\n     } else if  (input$x == 'disp') {\n          xLab <- 'Displacement (cu.in.)'\n     } else if  (input$x == 'hp') {\n          xLab <- 'Gross horsepower'\n     } else if  (input$x == 'drat'){\n          xLab <- 'Rear axle ratio'\n     } else if  (input$x == 'wt') {\n          xLab <-  'Weight (1000 lbs)'\n     } else if  (input$x == 'qsec'){\n          xLab <- '1/4 mile time'\n     } else if  (input$x == 'vs'){\n          xLab <- 'V/S'\n     } else if  (input$x == 'am'){\n          xLab<- 'Transmission (0 = automatic, 1 = manual)'\n     } else if  (input$x == 'gear'){\n          xLab <- 'Number of forward gears'\n     } else if  (input$x == 'carb'){\n          xLab <- 'Number of carburetors'\n     }\n     \n     \n     if (input$bTran){\n       if (input$color != 'None') \n          ggplot(ds(),aes_string(x=input$x, y='mpg')) + geom_point() + \n          geom_point(size=as.numeric(input$csize),color=input$color) +\n          labs( x= xLab, y = \"Miles Per Gallon\") +\n          geom_hline(aes(yintercept = av))+\n          geom_text(aes(0, av, label='avg',vjust= -1))\n       else\n         ggplot(ds(),aes_string(x=input$x, y='mpg')) + geom_point() + \n         geom_point(size=as.numeric(input$csize),color='black') +\n         labs( x= xLab, y = \"Miles Per Gallon\") +\n         geom_hline(aes(yintercept = av))+\n         geom_text(aes(0, av, label='avg',vjust= -1))\n     }\n     \n     else{\n        if (input$color != 'None') \n           ggplot(ds(),aes_string(x=input$x, y='mpg')) + \n           geom_point(size=as.numeric(input$csize),color=input$color) + \n           labs( x= xLab, y = \"Miles Per Gallon\")\n        else\n           ggplot(ds(),aes_string(x=input$x, y='mpg')) + \n           geom_point(size=as.numeric(input$csize),color='black') + \n           labs( x= xLab, y = \"Miles Per Gallon\")\n      }\n     \n   })\n  \n})\n",
+    "created" : 1468119213546.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3276729366",
+    "id" : "8BD6285A",
+    "lastKnownWriteTime" : 1468050800,
+    "last_content_update" : 1468050800,
+    "path" : "C:/myFile/coursera/m9/wk4/sample/01-CourseProjectShinyApplication-andReproduciblePitch2/mpg/server2.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

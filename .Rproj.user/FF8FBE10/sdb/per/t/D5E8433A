@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\nshinyUI(fluidPage(\n        \n        headerPanel(\" Body Mass Indexs (BMI)\"),\n       \n        sidebarPanel(\n            h4(\"To know you BMI, please slide the slider bar of weight and height\"),\n            br(),\n            sliderInput('slrBdyKg', label = \"Your weight in Kg\",  min = 10, max= 250, value = 20),\n            verbatimTextOutput(\"bdyKgVal\"),\n            br(),\n            br(),\n            sliderInput('slrBdyHt', label = \"Your height in cm\",  min = 10, max= 250, value = 100),\n            verbatimTextOutput(\"bdyHtVal\"),\n            br()\n            #actionButton('actButton', label=\"submit\")\n        ),\n        \n        mainPanel(\n                tabsetPanel(\n                        tabPanel(\"BMI\", h2(\"Your Body Mass Index (BMI)\"),\n                                 verbatimTextOutput(\"BMIVal\"),\n                                 br(),\n                                 h2(\"Your weight category is\"),\n                                 verbatimTextOutput(\"urCategory\")),\n                        \n                        tabPanel(\"README\", includeMarkdown(\"README.md\"))\n               )\n        )\n        \n))\n",
+    "created" : 1468116604363.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "372820851",
+    "id" : "D5E8433A",
+    "lastKnownWriteTime" : 1468127784,
+    "last_content_update" : 1468127784221,
+    "path" : "C:/myFile/coursera/m9/wk4/myBMI/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
